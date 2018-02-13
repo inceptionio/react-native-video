@@ -120,7 +120,7 @@ public class ReactVideoView extends ScalableVideoView implements MediaPlayer.OnP
         setSurfaceTextureListener(this);
 
         mProgressUpdateRunnable = new Runnable() {
-            @Override
+            //@Override
             public void run() {
 
                 if (mMediaPlayerValid && !isCompleted &&!mPaused) {
@@ -136,7 +136,7 @@ public class ReactVideoView extends ScalableVideoView implements MediaPlayer.OnP
         };
     }
 
-    @Override
+    //@Override
     public boolean onTouchEvent(MotionEvent event) {
         if (mUseNativeControls) {
             initializeMediaControllerIfNeeded();
@@ -146,7 +146,7 @@ public class ReactVideoView extends ScalableVideoView implements MediaPlayer.OnP
         return super.onTouchEvent(event);
     }
 
-    @Override
+    //@Override
     @SuppressLint("DrawAllocation")
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         super.onLayout(changed, left, top, right, bottom);
@@ -401,7 +401,7 @@ public class ReactVideoView extends ScalableVideoView implements MediaPlayer.OnP
     }
 
 
-    @Override
+    //@Override
     public void onPrepared(MediaPlayer mp) {
 
         mMediaPlayerValid = true;
@@ -446,7 +446,7 @@ public class ReactVideoView extends ScalableVideoView implements MediaPlayer.OnP
         }
     }
 
-    @Override
+    //@Override
     public boolean onError(MediaPlayer mp, int what, int extra) {
 
         WritableMap error = Arguments.createMap();
@@ -458,7 +458,7 @@ public class ReactVideoView extends ScalableVideoView implements MediaPlayer.OnP
         return true;
     }
 
-    @Override
+    //@Override
     public boolean onInfo(MediaPlayer mp, int what, int extra) {
         switch (what) {
             case MediaPlayer.MEDIA_INFO_BUFFERING_START:
@@ -476,12 +476,12 @@ public class ReactVideoView extends ScalableVideoView implements MediaPlayer.OnP
         return false;
     }
 
-    @Override
+    //@Override
     public void onBufferingUpdate(MediaPlayer mp, int percent) {
         mVideoBufferedDuration = (int) Math.round((double) (mVideoDuration * percent) / 100.0);
     }
 
-    @Override
+    //@Override
     public void seekTo(int msec) {
 
         if (mMediaPlayerValid) {
@@ -497,46 +497,46 @@ public class ReactVideoView extends ScalableVideoView implements MediaPlayer.OnP
         }
     }
 
-    @Override
+    //@Override
     public int getBufferPercentage() {
         return 0;
     }
 
-    @Override
+    //@Override
     public boolean canPause() {
         return true;
     }
 
-    @Override
+    //@Override
     public boolean canSeekBackward() {
         return true;
     }
 
-    @Override
+    //@Override
     public boolean canSeekForward() {
         return true;
     }
 
-    @Override
+    //@Override
     public int getAudioSessionId() {
         return 0;
     }
 
-    @Override
+    //@Override
     public void onCompletion(MediaPlayer mp) {
 
         isCompleted = true;
         mEventEmitter.receiveEvent(getId(), Events.EVENT_END.toString(), null);
     }
 
-    @Override
+    //@Override
     protected void onDetachedFromWindow() {
 
         mMediaPlayerValid = false;
         super.onDetachedFromWindow();
     }
 
-    @Override
+    //@Override
     protected void onAttachedToWindow() {
 
         super.onAttachedToWindow();
@@ -550,7 +550,7 @@ public class ReactVideoView extends ScalableVideoView implements MediaPlayer.OnP
 
     }
 
-    @Override
+    //@Override
     public void onHostPause() {
         if (mMediaPlayer != null && !mPlayInBackground) {
             mActiveStatePauseStatus = mPaused;
@@ -560,7 +560,7 @@ public class ReactVideoView extends ScalableVideoView implements MediaPlayer.OnP
         }
     }
 
-    @Override
+    //@Override
     public void onHostResume() {
         if (mMediaPlayer != null && !mPlayInBackground) {
             new Handler().post(new Runnable() {
@@ -574,7 +574,7 @@ public class ReactVideoView extends ScalableVideoView implements MediaPlayer.OnP
         }
     }
 
-    @Override
+    //@Override
     public void onHostDestroy() {
     }
 }
