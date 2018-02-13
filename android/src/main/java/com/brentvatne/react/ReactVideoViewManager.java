@@ -36,23 +36,23 @@ public class ReactVideoViewManager extends SimpleViewManager<ReactVideoView> {
     public static final String PROP_PLAY_IN_BACKGROUND = "playInBackground";
     public static final String PROP_CONTROLS = "controls";
 
-    @Override
+    //@Override
     public String getName() {
         return REACT_CLASS;
     }
 
-    @Override
+    //@Override
     protected ReactVideoView createViewInstance(ThemedReactContext themedReactContext) {
         return new ReactVideoView(themedReactContext);
     }
 
-    @Override
+    //@Override
     public void onDropViewInstance(ReactVideoView view) {
         super.onDropViewInstance(view);
         view.cleanupMediaPlayerResources();
     }
 
-    @Override
+    //@Override
     @Nullable
     public Map getExportedCustomDirectEventTypeConstants() {
         MapBuilder.Builder builder = MapBuilder.builder();
@@ -62,7 +62,7 @@ public class ReactVideoViewManager extends SimpleViewManager<ReactVideoView> {
         return builder.build();
     }
 
-    @Override
+    //@Override
     @Nullable
     public Map getExportedViewConstants() {
         return MapBuilder.of(
